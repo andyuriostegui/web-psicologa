@@ -62,6 +62,9 @@ export default function App() {
   // Estado para el lightbox de certificados
   const [certActivo, setCertActivo] = useState(null);
 
+  // Estado para el modal de Enfoques / Especialidades
+  const [modalEnfoques, setModalEnfoques] = useState(false);
+
   const reiniciarFiltro = () => {
     setFiltroPaso(1);
     setCompromiso(null);
@@ -136,7 +139,7 @@ export default function App() {
         <div className="space-x-8 text-xs uppercase tracking-widest font-medium opacity-80 hidden lg:flex">
           <a href="#inicio" className="hover:text-stone-900 transition">Inicio</a>
           <a href="#enfoque" className="hover:text-stone-900 transition">¿Es para ti?</a>
-          <a href="#servicios" className="hover:text-stone-900 transition">Especialidades</a>
+          <button onClick={() => setModalEnfoques(true)} className="hover:text-stone-900 transition">Especialidades</button>
           <a href="#reconocimientos" className="hover:text-stone-900 transition">Credenciales</a>
           <a href="#filtro" className="hover:text-stone-900 transition text-emerald-800 font-bold">Solicitar Cita</a>
         </div>
@@ -151,7 +154,7 @@ export default function App() {
               style={{ animationDelay: '0.05s' }}
             >
               <span className="w-1.5 h-1.5 bg-emerald-600 rounded-full animate-pulse"></span>
-              <span>Nadia Montes Arroyo — Psicoterapeuta</span>
+              <span>Nadia Montes Arroyo — Psicoterapeuta en Psicología Clínica y Psiconutrición</span>
             </span>
             <h1
               className="hero-anim font-serif text-4xl md:text-5xl lg:text-6xl text-stone-900 leading-[1.1]"
@@ -173,9 +176,9 @@ export default function App() {
             <a href="#filtro" className="bg-stone-900 text-stone-50 px-8 py-4 rounded-full text-xs uppercase tracking-widest font-semibold hover:bg-stone-800 transition duration-300 w-full sm:w-auto text-center shadow-lg shadow-stone-900/20">
               Consultar Disponibilidad
             </a>
-            <a href="#servicios" className="text-xs uppercase tracking-widest font-medium text-stone-500 hover:text-stone-900 transition w-full sm:w-auto text-center py-4">
+            <button onClick={() => setModalEnfoques(true)} className="text-xs uppercase tracking-widest font-medium text-stone-500 hover:text-stone-900 transition w-full sm:w-auto text-center py-4">
               Explorar Enfoques →
-            </a>
+            </button>
           </div>
         </div>
 
@@ -300,9 +303,35 @@ export default function App() {
               ))}
             </div>
           </Reveal>
+
+          <Reveal delay={140} as="div" className="bg-white rounded-[2rem] border border-stone-200 shadow-sm p-8 md:p-10 mt-8">
+            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8">
+              <div>
+                <h3 className="font-serif text-2xl text-stone-900 mb-1">Diplomatura en Psiconutrición</h3>
+                <p className="text-sm text-stone-500 font-light">165 horas curriculares · Expedido 4 de marzo de 2026</p>
+              </div>
+              <div className="flex flex-wrap gap-2 text-[10px] uppercase tracking-[0.15em] font-semibold text-emerald-700">
+                <span className="bg-emerald-50 px-3 py-1.5 rounded-full">IMEP</span>
+                <span className="bg-emerald-50 px-3 py-1.5 rounded-full">UniCervantes</span>
+              </div>
+            </div>
+
+            <button
+              onClick={() => setCertActivo({ src: '/psiconutricion-diplomatura.png', label: 'Diplomatura en Psiconutrición' })}
+              className="group relative w-full max-w-xs aspect-[4/3] rounded-xl overflow-hidden border border-stone-200 bg-stone-50 hover:border-emerald-500 transition duration-300"
+            >
+              <img
+                src="/psiconutricion-diplomatura.png"
+                alt="Diplomatura en Psiconutrición"
+                className="w-full h-full object-cover group-hover:scale-105 transition duration-500 ease-out"
+              />
+              <div className="absolute inset-0 bg-stone-900/0 group-hover:bg-stone-900/30 transition duration-300 flex items-center justify-center">
+                <span className="opacity-0 group-hover:opacity-100 transition text-white text-[10px] uppercase tracking-widest font-semibold">Ver completo</span>
+              </div>
+            </button>
+          </Reveal>
         </div>
 
-        {/* LIGHTBOX */}
         {certActivo && (
           <div
             className="fixed inset-0 bg-stone-950/90 z-[100] flex items-center justify-center p-6 cursor-zoom-out"
@@ -324,6 +353,56 @@ export default function App() {
           </div>
         )}
       </section>
+
+      {/* MODAL: ENFOQUES / ESPECIALIDADES */}
+      {modalEnfoques && (
+        <div
+          className="fixed inset-0 bg-stone-950/60 backdrop-blur-sm z-[100] flex items-center justify-center p-6"
+          onClick={() => setModalEnfoques(false)}
+        >
+          <div
+            className="bg-[#FAFAF8] rounded-[2rem] max-w-2xl w-full max-h-[85vh] overflow-y-auto p-8 md:p-12 shadow-2xl relative animate-fade-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setModalEnfoques(false)}
+              className="absolute top-6 right-6 text-stone-400 hover:text-stone-900 text-2xl font-light transition"
+              aria-label="Cerrar"
+            >
+              ×
+            </button>
+
+            <span className="text-xs uppercase tracking-[0.2em] text-emerald-700 font-semibold block mb-3">Especialidades Clínicas</span>
+            <h3 className="font-serif text-3xl text-stone-900 mb-6">Enfoques de Acompañamiento</h3>
+
+            <div className="space-y-6">
+              <div className="border-b border-stone-200 pb-5">
+                <h4 className="font-medium text-stone-900 mb-1.5">Regulación Emocional y Salud Mental</h4>
+                <p className="text-sm text-stone-600 font-light leading-relaxed">Manejo de ansiedad, estrés, depresión, pensamientos persistentes y cambios intensos en el estado de ánimo.</p>
+              </div>
+              <div className="border-b border-stone-200 pb-5">
+                <h4 className="font-medium text-stone-900 mb-1.5">Crisis, Duelo y Vínculos</h4>
+                <p className="text-sm text-stone-600 font-light leading-relaxed">Acompañamiento seguro durante crisis emocionales, procesos de duelo y dificultades en la regulación de relaciones interpersonales.</p>
+              </div>
+              <div className="border-b border-stone-200 pb-5">
+                <h4 className="font-medium text-stone-900 mb-1.5">Consumos Problemáticos</h4>
+                <p className="text-sm text-stone-600 font-light leading-relaxed">Apoyo terapéutico para superar el consumo problemático de alcohol, tabaco y otras sustancias.</p>
+              </div>
+              <div>
+                <h4 className="font-medium text-stone-900 mb-1.5">Psiconutrición y Relación con el Cuerpo</h4>
+                <p className="text-sm text-stone-600 font-light leading-relaxed">Trabajo profundo en la relación con el cuerpo y la comida, sin dietas restrictivas ni enfoques punitivos, desde una mirada integral entre psicología clínica y nutrición.</p>
+              </div>
+            </div>
+
+            <button
+              onClick={() => { setModalEnfoques(false); document.getElementById('filtro')?.scrollIntoView({ behavior: 'smooth' }); }}
+              className="mt-8 w-full text-center bg-stone-900 text-white py-4 rounded-full text-xs uppercase tracking-widest font-semibold hover:bg-stone-800 transition"
+            >
+              Solicitar Disponibilidad
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* FILTRO DE CURIOSOS INTERACTIVO */}
       <section id="filtro" className="bg-stone-900 py-24 text-stone-100">
