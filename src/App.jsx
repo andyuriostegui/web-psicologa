@@ -1,4 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react';
+import {
+  Wind,
+  CloudRain,
+  BatteryLow,
+  HeartCrack,
+  Thermometer,
+  Users,
+  UtensilsCrossed,
+  Flame,
+  CircleDashed,
+  Leaf,
+  Wine,
+  Moon,
+  Sparkle,
+  X,
+  Check,
+  ArrowRight,
+  ArrowLeft,
+  Info,
+} from 'lucide-react';
 
 /* ──────────────────────────────────────────────
    HOOK: useReveal
@@ -85,6 +105,22 @@ export default function App() {
     const textoBase = `Hola Nadia, he completado el filtro en tu web. Estoy buscando un proceso clínico integral y estoy lista/o para comprometerme. A grandes rasgos, lo que estoy atravesando es: "${descripcion}". Me gustaría consultar disponibilidad.`;
     return `https://wa.me/524422501507?text=${encodeURIComponent(textoBase)}`;
   };
+
+  // Datos del grid de síntomas/situaciones, ahora con iconos en vez de emojis
+  const situaciones = [
+    { Icon: Wind, titulo: 'Ansiedad constante', desc: 'Pensamientos que no paran, tensión en el cuerpo, miedo sin razón aparente.' },
+    { Icon: CloudRain, titulo: 'Tristeza o depresión', desc: 'Días vacíos, llanto sin saber por qué, sensación de que nada tiene sentido.' },
+    { Icon: BatteryLow, titulo: 'Sin motivación', desc: 'Te cuesta levantarte, nada te genera ilusión, todo se siente pesado.' },
+    { Icon: HeartCrack, titulo: 'Apegos y relaciones', desc: 'Dependencia emocional, miedo al abandono, patrones que se repiten.' },
+    { Icon: Thermometer, titulo: 'Cambios de humor', desc: 'Emociones intensas y repentinas que no sabes cómo manejar.' },
+    { Icon: Users, titulo: 'Problemas de pareja', desc: 'Conflictos frecuentes, distancia emocional, falta de comunicación.' },
+    { Icon: UtensilsCrossed, titulo: 'Relación con la comida', desc: 'Comer por ansiedad, culpa después de comer, obsesión con el cuerpo.' },
+    { Icon: Flame, titulo: 'Estrés crónico', desc: 'Agotamiento, sensación de no poder más, cuerpo siempre en alerta.' },
+    { Icon: CircleDashed, titulo: 'Vacío interior', desc: 'Falta de identidad, no saber quién eres ni qué quieres realmente.' },
+    { Icon: Leaf, titulo: 'Duelo o pérdida', desc: 'Dolor por una pérdida que no sabes cómo procesar o superar.' },
+    { Icon: Wine, titulo: 'Consumos problemáticos', desc: 'Uso de alcohol, tabaco u otras sustancias para calmar el malestar.' },
+    { Icon: Moon, titulo: 'Insomnio o fatiga', desc: 'No puedes dormir bien, te despiertas agotado/a, sin energía.' },
+  ];
 
   return (
     <div className="min-h-screen bg-[#FAFAF8] text-stone-800 font-sans antialiased selection:bg-stone-200">
@@ -180,8 +216,8 @@ export default function App() {
             <a href="#filtro" className="bg-stone-900 text-stone-50 px-8 py-4 rounded-full text-xs uppercase tracking-widest font-semibold hover:bg-stone-800 transition duration-300 w-full sm:w-auto text-center shadow-lg shadow-stone-900/20">
               Consultar Disponibilidad
             </a>
-            <button onClick={() => setModalEnfoques(true)} className="text-xs uppercase tracking-widest font-medium text-stone-500 hover:text-stone-900 transition w-full sm:w-auto text-center py-4">
-              Explorar Enfoques →
+            <button onClick={() => setModalEnfoques(true)} className="inline-flex items-center justify-center gap-1.5 text-xs uppercase tracking-widest font-medium text-stone-500 hover:text-stone-900 transition w-full sm:w-auto text-center py-4">
+              Explorar Enfoques <ArrowRight size={14} />
             </button>
           </div>
         </div>
@@ -210,6 +246,22 @@ export default function App() {
           <Reveal as="div" className="text-center space-y-3 mb-16">
             <span className="text-xs uppercase tracking-[0.2em] text-stone-400 font-semibold block">Claridad y Honestidad</span>
             <h2 className="font-serif text-3xl md:text-4xl text-stone-900">¿Es este el espacio adecuado para ti?</h2>
+            <p className="text-stone-500 font-light text-sm max-w-xl mx-auto pt-2 leading-relaxed">
+              Si alguna de estas situaciones resuena contigo, probablemente estás en el lugar correcto.
+            </p>
+          </Reveal>
+
+          {/* GRID DE SÍNTOMAS / SITUACIONES */}
+          <Reveal delay={60} as="div" className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto mb-16">
+            {situaciones.map((item, i) => (
+              <Reveal key={i} delay={i * 40} as="div" className="group bg-stone-50 hover:bg-emerald-50 border border-stone-100 hover:border-emerald-200 rounded-2xl p-5 transition duration-300 cursor-default">
+                <div className="w-9 h-9 rounded-xl bg-white border border-stone-200 group-hover:border-emerald-300 group-hover:bg-emerald-100 flex items-center justify-center text-stone-500 group-hover:text-emerald-700 transition duration-300 mb-3">
+                  <item.Icon size={18} strokeWidth={1.75} />
+                </div>
+                <h4 className="font-medium text-stone-900 text-sm mb-1.5 group-hover:text-emerald-900 transition">{item.titulo}</h4>
+                <p className="text-[11px] text-stone-500 font-light leading-relaxed group-hover:text-stone-600 transition">{item.desc}</p>
+              </Reveal>
+            ))}
           </Reveal>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -220,19 +272,19 @@ export default function App() {
               </h3>
               <ul className="space-y-5 text-stone-700 font-light">
                 <li className="flex items-start">
-                  <span className="text-emerald-700 mr-3 mt-1 text-lg">✦</span>
+                  <span className="text-emerald-700 mr-3 mt-1"><Sparkle size={16} strokeWidth={2} /></span>
                   <span className="leading-relaxed">Herramientas para manejar <strong>ansiedad, estrés, depresión y pensamientos persistentes</strong>.</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-emerald-700 mr-3 mt-1 text-lg">✦</span>
+                  <span className="text-emerald-700 mr-3 mt-1"><Sparkle size={16} strokeWidth={2} /></span>
                   <span className="leading-relaxed">Estabilidad ante <strong>cambios intensos en tu estado de ánimo</strong> y dificultades en la regulación emocional o tus vínculos.</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-emerald-700 mr-3 mt-1 text-lg">✦</span>
+                  <span className="text-emerald-700 mr-3 mt-1"><Sparkle size={16} strokeWidth={2} /></span>
                   <span className="leading-relaxed">Acompañamiento seguro durante <strong>crisis emocionales, duelos</strong> o para superar consumos problemáticos (alcohol, tabaco, sustancias).</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-emerald-700 mr-3 mt-1 text-lg">✦</span>
+                  <span className="text-emerald-700 mr-3 mt-1"><Sparkle size={16} strokeWidth={2} /></span>
                   <span className="leading-relaxed">Sanar a nivel profundo <strong>la relación con tu cuerpo y la comida</strong>, sin dietas restrictivas.</span>
                 </li>
               </ul>
@@ -245,20 +297,28 @@ export default function App() {
               </h3>
               <ul className="space-y-5 text-stone-600 font-light">
                 <li className="flex items-start">
-                  <span className="text-stone-300 mr-3 mt-1 text-lg">✕</span>
+                  <span className="text-stone-300 mr-3 mt-1"><X size={16} strokeWidth={2} /></span>
                   <span className="leading-relaxed">Buscas una píldora mágica o soluciones superficiales de corto plazo sin disposición a explorar tu historia.</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-stone-300 mr-3 mt-1 text-lg">✕</span>
+                  <span className="text-stone-300 mr-3 mt-1"><X size={16} strokeWidth={2} /></span>
                   <span className="leading-relaxed">Quieres un régimen alimenticio estricto, menús cerrados o enfoques basados en el castigo hacia tu cuerpo.</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-stone-300 mr-3 mt-1 text-lg">✕</span>
+                  <span className="text-stone-300 mr-3 mt-1"><X size={16} strokeWidth={2} /></span>
                   <span className="leading-relaxed">No tienes la disponibilidad de tiempo o disposición para comprometerte con sesiones regulares.</span>
                 </li>
               </ul>
             </Reveal>
           </div>
+
+          {/* CTA debajo del grid */}
+          <Reveal delay={100} as="div" className="text-center mt-12">
+            <a href="#filtro" className="inline-flex items-center gap-2 bg-stone-900 text-white px-10 py-4 rounded-full text-xs uppercase tracking-widest font-semibold hover:bg-emerald-900 transition duration-300 shadow-lg shadow-stone-900/20">
+              Quiero iniciar mi proceso <ArrowRight size={14} />
+            </a>
+          </Reveal>
+
         </div>
       </section>
 
@@ -362,10 +422,10 @@ export default function App() {
             />
             <button
               onClick={() => setCertActivo(null)}
-              className="absolute top-6 right-6 text-stone-300 hover:text-white text-3xl font-light"
+              className="absolute top-6 right-6 text-stone-300 hover:text-white transition"
               aria-label="Cerrar"
             >
-              ×
+              <X size={28} strokeWidth={1.75} />
             </button>
           </div>
         )}
@@ -383,10 +443,10 @@ export default function App() {
           >
             <button
               onClick={() => setModalEnfoques(false)}
-              className="absolute top-6 right-6 text-stone-400 hover:text-stone-900 text-2xl font-light transition"
+              className="absolute top-6 right-6 text-stone-400 hover:text-stone-900 transition"
               aria-label="Cerrar"
             >
-              ×
+              <X size={22} strokeWidth={1.75} />
             </button>
 
             <span className="text-xs uppercase tracking-[0.2em] text-emerald-700 font-semibold block mb-3">Especialidades Clínicas</span>
@@ -468,7 +528,9 @@ export default function App() {
                     Aún tengo dudas o mi horario es inestable.
                   </button>
                 </div>
-                <button onClick={() => setFiltroPaso(1)} className="text-xs text-stone-400 font-medium uppercase tracking-widest mx-auto block hover:text-stone-900 mt-4">← Regresar</button>
+                <button onClick={() => setFiltroPaso(1)} className="inline-flex items-center gap-1 text-xs text-stone-400 font-medium uppercase tracking-widest mx-auto hover:text-stone-900 mt-4">
+                  <ArrowLeft size={12} /> Regresar
+                </button>
               </div>
             )}
 
@@ -487,12 +549,14 @@ export default function App() {
                   <button
                     disabled={descripcion.trim().length < 10}
                     onClick={() => setFiltroPaso(4)}
-                    className="w-full text-center p-4 rounded-full bg-stone-900 text-white hover:bg-emerald-900 transition font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full inline-flex items-center justify-center gap-2 p-4 rounded-full bg-stone-900 text-white hover:bg-emerald-900 transition font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Siguiente paso →
+                    Siguiente paso <ArrowRight size={16} />
                   </button>
                 </div>
-                <button onClick={() => setFiltroPaso(2)} className="text-xs text-stone-400 font-medium uppercase tracking-widest mx-auto block hover:text-stone-900 mt-4">← Regresar</button>
+                <button onClick={() => setFiltroPaso(2)} className="inline-flex items-center gap-1 text-xs text-stone-400 font-medium uppercase tracking-widest mx-auto hover:text-stone-900 mt-4">
+                  <ArrowLeft size={12} /> Regresar
+                </button>
               </div>
             )}
 
@@ -500,7 +564,9 @@ export default function App() {
               <div className="text-center space-y-6 py-6 animate-fade-in">
                 {compromiso && motivo === 'Completo' ? (
                   <>
-                    <div className="w-16 h-16 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto text-3xl mb-4">✓</div>
+                    <div className="w-16 h-16 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Check size={30} strokeWidth={2.5} />
+                    </div>
                     <h4 className="font-serif text-2xl text-stone-900">Perfil Confirmado</h4>
                     <p className="text-sm text-stone-600 max-w-sm mx-auto leading-relaxed">
                       El enfoque de Áurea hace match con lo que buscas. Da clic abajo para solicitar fechas disponibles.
@@ -516,8 +582,8 @@ export default function App() {
                   </>
                 ) : (
                   <>
-                    <div className="w-16 h-16 bg-stone-50 border border-stone-200 text-stone-400 rounded-full flex items-center justify-center mx-auto text-2xl mb-6 shadow-sm">
-                      <span className="font-serif italic">i</span>
+                    <div className="w-16 h-16 bg-stone-50 border border-stone-200 text-stone-400 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
+                      <Info size={26} strokeWidth={1.75} />
                     </div>
                     <h4 className="font-serif text-2xl text-stone-900">Respetamos tu ritmo actual</h4>
                     <p className="text-sm text-stone-600 max-w-md mx-auto leading-relaxed mt-4">
@@ -659,7 +725,7 @@ export default function App() {
                     <div className="text-[11px] text-stone-400 font-light">Atención vía WhatsApp</div>
                   </div>
                 </div>
-                <span className="text-stone-300 group-hover:text-emerald-600 transition transform group-hover:translate-x-1">→</span>
+                <ArrowRight size={16} className="text-stone-300 group-hover:text-emerald-600 transition transform group-hover:translate-x-1" />
               </a>
 
               {/* Botón IG */}
@@ -678,7 +744,7 @@ export default function App() {
                     <div className="text-[11px] text-stone-400 font-light">Reflexiones en Instagram</div>
                   </div>
                 </div>
-                <span className="text-stone-300 group-hover:text-emerald-600 transition transform group-hover:translate-x-1">→</span>
+                <ArrowRight size={16} className="text-stone-300 group-hover:text-emerald-600 transition transform group-hover:translate-x-1" />
               </a>
 
               {/* Botón FB */}
@@ -695,7 +761,7 @@ export default function App() {
                     <div className="text-[11px] text-stone-400 font-light">Eventos y publicaciones</div>
                   </div>
                 </div>
-                <span className="text-stone-300 group-hover:text-emerald-600 transition transform group-hover:translate-x-1">→</span>
+                <ArrowRight size={16} className="text-stone-300 group-hover:text-emerald-600 transition transform group-hover:translate-x-1" />
               </a>
 
             </div>
@@ -759,8 +825,7 @@ export default function App() {
           <div className="space-y-3">
             <span className="text-stone-200 uppercase tracking-widest text-xs font-semibold block">Contacto</span>
             <p className="font-light hover:text-stone-200 transition cursor-pointer">WA: 442 250 1507</p>
-            <p className="font-light hover:text-stone-200 transition cursor-pointer">
-luzysanacion33@gmail.com</p>
+            <p className="font-light hover:text-stone-200 transition cursor-pointer">IG: @aurea.centro.t</p>
           </div>
           <div className="space-y-3 md:text-right">
             <span className="text-stone-200 uppercase tracking-widest text-xs font-semibold block">Modalidades</span>
