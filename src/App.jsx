@@ -172,7 +172,7 @@ export default function App() {
       {/* NAVBAR */}
       <nav className="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center bg-white/70 backdrop-blur-md sticky top-0 z-50 border-b border-stone-200/50">
         <div className="flex flex-col">
-          <span className="text-2xl font-serif tracking-[0.15em] text-stone-900">ÁUREA</span>
+          <img src="/aurealogo.jpeg" alt="Áurea Centro Terapéutico" className="h-10 md:h-30 w-auto object-contain" />
           <span className="text-[9px] uppercase tracking-[0.3em] text-stone-400 mt-0.5 font-medium">Centro Terapéutico</span>
         </div>
         <div className="space-x-8 text-xs uppercase tracking-widest font-medium opacity-80 hidden lg:flex">
