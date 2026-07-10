@@ -172,7 +172,7 @@ export default function App() {
       {/* NAVBAR */}
       <nav className="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center bg-white/70 backdrop-blur-md sticky top-0 z-50 border-b border-stone-200/50">
         <div className="flex flex-col">
-          <img src="/aurealogo.jpeg" alt="Áurea Centro Terapéutico" className="h-10 md:h-30 w-auto object-contain" />
+          <img src="/aurealogo.jpeg" alt="Áurea Centro Terapéutico" className="h-16 md:h-20 w-auto object-contain" />
           <span className="text-[9px] uppercase tracking-[0.3em] text-stone-400 mt-0.5 font-medium">Centro Terapéutico</span>
         </div>
         <div className="space-x-8 text-xs uppercase tracking-widest font-medium opacity-80 hidden lg:flex">
@@ -236,6 +236,54 @@ export default function App() {
                 className="w-full h-full object-cover object-center hover:scale-105 transition duration-1000 ease-out"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECCIÓN: ANTES Y DESPUÉS DEL PROCESO TERAPÉUTICO */}
+      <section id="transformacion" className="bg-[#FAFAF8] py-24 border-t border-stone-200/60">
+        <div className="max-w-6xl mx-auto px-6">
+          <Reveal as="div" className="text-center space-y-3 mb-16">
+            <span className="text-xs uppercase tracking-[0.2em] text-emerald-700 font-semibold block">El Camino del Proceso</span>
+            <h2 className="font-serif text-3xl md:text-4xl text-stone-900">De dónde partes, a dónde puedes llegar</h2>
+          </Reveal>
+
+          <div className="grid md:grid-cols-2 gap-8 items-stretch">
+            {/* ANTES */}
+            <Reveal as="div" className="bg-white rounded-[2rem] border border-stone-200 shadow-sm overflow-hidden flex flex-col">
+              <div className="aspect-[4/3] bg-stone-100 overflow-hidden flex items-center justify-center p-4">
+                <img
+                  src="/1.png"
+                  alt="Antes del proceso terapéutico"
+                  className="max-w-full max-h-full w-auto h-auto object-contain grayscale-[15%]"
+                />
+              </div>
+              <div className="p-8 space-y-3 flex-1">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 font-semibold block">Antes</span>
+                <h3 className="font-serif text-xl text-stone-900">Cuando llegas a terapia por primera vez</h3>
+                <p className="text-sm text-stone-600 font-light leading-relaxed">
+                  Es común iniciar un proceso atravesando ansiedad, depresión u otra situación que no te deja sentirte en paz. Sin motivación para levantarte, sin saber qué hacer ni cómo cambiar el rumbo, buscando orientación y compañía. Lo que muchas veces aún no se sabe es que dentro de ti ya existe una fuerza y una confianza guardadas, esperando ser reconocidas para empezar el cambio.
+                </p>
+              </div>
+            </Reveal>
+
+            {/* DESPUÉS */}
+            <Reveal delay={100} as="div" className="bg-white rounded-[2rem] border border-emerald-200 shadow-sm overflow-hidden flex flex-col">
+              <div className="aspect-[4/3] bg-stone-100 overflow-hidden flex items-center justify-center p-4">
+                <img
+                  src="/2.png"
+                  alt="Después del proceso terapéutico"
+                  className="max-w-full max-h-full w-auto h-auto object-contain"
+                />
+              </div>
+              <div className="p-8 space-y-3 flex-1">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-emerald-700 font-semibold block">Después</span>
+                <h3 className="font-serif text-xl text-stone-900">Cuando el trabajo interno da frutos</h3>
+                <p className="text-sm text-stone-600 font-light leading-relaxed">
+                  De la mano de tu terapeuta, con el tiempo se recupera la seguridad y la confianza que antes no estaban. Te conoces mejor a ti mismo/a y encuentras la forma de retomar el rumbo de tu vida personal y de pareja. Te sientes pleno, motivado y capaz de lograr tus objetivos, mientras los malestares emocionales se van transformando con el trabajo realizado dentro y fuera de sesión.
+                </p>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
