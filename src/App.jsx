@@ -335,6 +335,10 @@ export default function App() {
                   <span className="text-emerald-700 mr-3 mt-1"><Sparkle size={16} strokeWidth={2} /></span>
                   <span className="leading-relaxed">Sanar a nivel profundo <strong>la relación con tu cuerpo y la comida</strong>, sin dietas restrictivas.</span>
                 </li>
+                <li className="flex items-start">
+                  <span className="text-emerald-700 mr-3 mt-1"><Sparkle size={16} strokeWidth={2} /></span>
+                  <span className="leading-relaxed">Acompañamiento emocional integral, con <strong>trabajo interior y espiritual, respiración consciente y meditación</strong>, además de apoyo disponible fuera de consulta.</span>
+                </li>
               </ul>
             </Reveal>
 
