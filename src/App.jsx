@@ -172,7 +172,7 @@ export default function App() {
       {/* NAVBAR */}
       <nav className="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center bg-white/70 backdrop-blur-md sticky top-0 z-50 border-b border-stone-200/50">
         <div className="flex flex-col">
-          <img src="/aurealogo.jpeg" alt="Áurea Centro Terapéutico" className="h-16 md:h-20 w-auto object-contain" />
+          <img src="/aurealogo.jpeg" alt="Áurea Centro Terapéutico" className="h-30 md:h-50 w-auto object-contain" />
           <span className="text-[9px] uppercase tracking-[0.3em] text-stone-400 mt-0.5 font-medium">Centro Terapéutico</span>
         </div>
         <div className="space-x-8 text-xs uppercase tracking-widest font-medium opacity-80 hidden lg:flex">
@@ -231,7 +231,7 @@ export default function App() {
             <div className="absolute inset-0 bg-emerald-100 rounded-[2.5rem] transform translate-x-4 translate-y-4 -z-10"></div>
             <div className="w-full aspect-[4/5] bg-stone-200 overflow-hidden shadow-2xl rounded-[2.5rem]">
               <img
-                src="/aureafoton.jpeg"
+                src="/aurea.jpeg"
                 alt="Nadia Montes"
                 className="w-full h-full object-cover object-center hover:scale-105 transition duration-1000 ease-out"
               />
@@ -253,7 +253,7 @@ export default function App() {
             <Reveal as="div" className="bg-white rounded-[2rem] border border-stone-200 shadow-sm overflow-hidden flex flex-col">
               <div className="aspect-[4/3] bg-stone-100 overflow-hidden flex items-center justify-center p-4">
                 <img
-                  src="/1.png"
+                  src="/2.jpeg"
                   alt="Antes del proceso terapéutico"
                   className="max-w-full max-h-full w-auto h-auto object-contain grayscale-[15%]"
                 />
@@ -271,7 +271,7 @@ export default function App() {
             <Reveal delay={100} as="div" className="bg-white rounded-[2rem] border border-emerald-200 shadow-sm overflow-hidden flex flex-col">
               <div className="aspect-[4/3] bg-stone-100 overflow-hidden flex items-center justify-center p-4">
                 <img
-                  src="/2.png"
+                  src="/1.jpeg"
                   alt="Después del proceso terapéutico"
                   className="max-w-full max-h-full w-auto h-auto object-contain"
                 />
@@ -383,14 +383,14 @@ export default function App() {
           </Reveal>
 
           {/* Foto de Nadia en consultorio */}
-          <Reveal delay={60} as="div" className="flex justify-center mb-12">
+          <Reveal delay={10} as="div" className="flex justify-center mb-12">
             <div className="relative">
               <div className="absolute inset-0 bg-emerald-100 rounded-[2rem] transform translate-x-3 translate-y-3 -z-10"></div>
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-[2rem] overflow-hidden shadow-xl border border-stone-100">
                 <img
-                  src="/aureafoto.jpeg"
+                  src="/aureafoton.jpeg"
                   alt="Nadia Montes Arroyo en consultorio"
-                  className="w-full h-full object-cover object-top"
+                  className="w-80 h-80 object-cover object-10"
                 />
               </div>
             </div>
