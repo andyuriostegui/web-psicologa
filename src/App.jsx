@@ -389,7 +389,7 @@ export default function App() {
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-[2rem] overflow-hidden shadow-xl border border-stone-100">
                 <img
                   src="/aureafoton.jpeg"
-                  alt="Nadia Montes Arroyo en consultorio"
+                  alt="Nadia Montes Arroyo en consultorio  ubicado en Queretaron"
                   className="w-80 h-80 object-cover object-10"
                 />
               </div>
